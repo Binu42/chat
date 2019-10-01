@@ -17,19 +17,18 @@ const $messages = $('#messages');
 const messageTemplate = $('#message-template').html();
 const locationTemplate = $('#location-template').html();
 
-socket.on('show', (message)=>{
-    console.log(message);
+socket.on('show', (message) => {
     const html = Mustache.render(messageTemplate, {
-        message: message.text
-        // createdAt: message.createdAt
+        message: message.text,
+        createdAt: moment(message.createdAt).format("h:mm a")
     });
     $messages.append(html);
 })
 
 socket.on('show-location', details => {
     const html = Mustache.render(locationTemplate, {
-        message: details.message,
-        location: details.location
+        location: details.text,
+        createdAt: moment(details.createdAt).format("h:mm a")
     });
     $messages.append(html);
 })
@@ -39,14 +38,13 @@ $(() => {
         event.preventDefault();
         $formButton.attr('disabled', true)
         const message = $message.val();
-        $message.focus();
-        socket.emit('message', message, (error)=> {
+        socket.emit('message', message, (error) => {
             $formButton.attr('disabled', false);
             $message.val('');
-            if(error){
-                return socket.emit('message', error)
+            $message.focus();
+            if (error) {
+                return console.log(error);
             }
-
             console.log('Message Delivered');
         });
     })
@@ -54,7 +52,7 @@ $(() => {
 
 $(() => {
     $locationBtn.on('click', () => {
-        if(!navigator.geolocation){
+        if (!navigator.geolocation) {
             module('Your browser doesn\'t support geolocation');
         }
         $locationBtn.attr('disabled', true);

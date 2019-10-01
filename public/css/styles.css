@@ -1,0 +1,205 @@
+/* General Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+input {
+    font-size: 14px;
+}
+
+body {
+    line-height: 1.4;
+    color: #333333;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+hr{
+    border: none;
+    border-top: 2px solid coral;
+}
+
+h1 {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #777;
+}
+
+input {
+    border: 2px solid #050505;
+    padding: 12px;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    padding: 12px;
+    background: #7C5CBF;
+    border: none;
+    color: white;
+    font-size: 16px;
+    transition: background .3s ease;
+}
+
+#location{
+    border-radius: 0 5px 5px 0;
+    background: #06ffea;
+    color: #050505;
+}
+
+#location:hover{
+    background: #06e2ff;
+}
+
+button:hover {
+    background: #6b47b8;
+    opacity: 0.8;
+}
+
+button:disabled {
+    cursor: default;
+    background: #7c5cbf94;
+}
+
+/* Join Page Styles */
+
+.centered-form {
+    background: #333744;
+    width: 100vw;
+    height: 100vh;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-form__box {
+    box-shadow: 0px 0px 17px 1px #1D1F26;
+    background: #F7F7FA;
+    padding: 24px;
+    width: 250px;
+}
+
+.centered-form button {
+    width: 100%;
+}
+
+.centered-form input {
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+/* Chat Page Layout */
+
+.chat {
+    display: flex;
+}
+
+.chat__sidebar {
+    height: 90vh;
+    color: white;
+    background: #333744;
+    width: 25%;
+    overflow-y: scroll
+}
+
+/* Chat styles */
+
+.chat__main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+.chat__messages {
+    flex-grow: 1;
+    padding: 24px 24px 0 24px;
+    overflow-y: scroll;
+}
+
+/* Message Styles */
+
+.message {
+    margin-bottom: 16px;   
+}
+
+.message__name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-right: 8px;
+}
+
+.message__meta {
+    color: #777;
+    font-size: 14px;
+    float: right;
+}
+
+.message a {
+    color: #0070CC;
+}
+
+/* Message Composition Styles */
+
+.compose {
+    display: flex;
+    flex-shrink: 0;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.compose form {
+    display: flex;
+    flex-grow: 1;
+}
+
+.compose input {
+    border: 1px solid #333232;
+    width: 100%;
+    padding: 12px;
+    flex-grow: 1;
+    border-radius: 5px 0 0 5px;
+}
+
+.compose button {
+    font-size: 14px;
+}
+
+/* Chat Sidebar Styles */
+
+.room-title {
+    font-weight: 400;
+    font-size: 22px;
+    background: #2c2f3a;
+    padding: 24px;   
+}
+
+.list-title {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 4px;
+    padding: 12px 24px 0 24px;
+}
+
+.users {
+    list-style-type: none;
+    font-weight: 300;
+    padding: 12px 24px 0 24px;
+}
+
+@media(max-width: 40rem){
+    .chat__sidebar{
+        display: none;
+    }
+}
