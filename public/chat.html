@@ -24,8 +24,8 @@
         </div>
     </div>
     <div class="compose">
-        <form id="chat">
-            <input type="text" id="message" autocomplete="off">
+        <form id="chat" method="post">
+            <input type="text" id="message" autocomplete="off" required>
             <button id="send">Send<i class="fa fa-paper-plane" aria-hidden="true"></i></button>
         </form>
         <button id="location">Location <i class="fa fa-map-marker" aria-hidden="true"></i></button>
@@ -61,7 +61,7 @@
         <h3 class='list-title'>Online Users</h3>
         <ul class="users">
             {{#users}}
-                <li>{{username}} <span class="online">•</span></li>
+                <li class='username'>{{username}} <span class="online">•</span></li>
                 <hr>
                 <p class="clear"></p>
             {{/users}}

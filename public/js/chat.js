@@ -16,7 +16,7 @@ const locationTemplate = $('#location-template').html();
 const roomUsersTemplate = $('#roomUsers-template').html();
 
 const autoscroll = () => {
-    $messages.scrollTop($(document).height());
+    $messages.scrollTop($messages.height());
 }
 
 socket.on('show', (message) => {

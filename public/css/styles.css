@@ -130,6 +130,8 @@ button:disabled {
     display: flex;
     flex-direction: column;
     height: 88vh;
+    background-image: url('../img/chatbg.jpg');
+    background-position: top;
 }
 
 .chat__messages {
@@ -146,12 +148,13 @@ button:disabled {
 
 .message__name {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-right: 8px;
+    text-transform: capitalize;
 }
 
 .message__meta {
-    color: #777;
+    color: #334133;
     font-size: 14px;
     float: right;
 }
@@ -216,6 +219,10 @@ button:disabled {
 
 .clear{
     clear: both;
+}
+
+.username{
+    text-transform: capitalize;
 }
 
 @media(max-width: 40rem){
