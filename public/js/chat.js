@@ -1,36 +1,50 @@
 const socket = io()
 
-// socket.on('countUpdated', (count)=> {
-//     console.log('count updated', count);
-// });
-
-// document.querySelector('#increment').addEventListener('click', ()=> {
-//     console.log('clicked');
-//     socket.emit('increment');
-// })
-
+// Elements
 const $chatForm = $('#chat');
 const $message = $('#message');
 const $formButton = $('#send');
 const $locationBtn = $('#location');
 const $messages = $('#messages');
+const $roomUsers = $('#roomUsers')
+
+// Options
+var {username, room} = Qs.parse(location.search, {ignoreQueryPrefix: true})
+// Templates
 const messageTemplate = $('#message-template').html();
 const locationTemplate = $('#location-template').html();
+const roomUsersTemplate = $('#roomUsers-template').html();
+
+const autoscroll = () => {
+    $messages.scrollTop($(document).height());
+}
 
 socket.on('show', (message) => {
     const html = Mustache.render(messageTemplate, {
+        username: message.username,
         message: message.text,
         createdAt: moment(message.createdAt).format("h:mm a")
     });
     $messages.append(html);
+    autoscroll();
 })
 
 socket.on('show-location', details => {
     const html = Mustache.render(locationTemplate, {
+        username: details.username,
         location: details.text,
         createdAt: moment(details.createdAt).format("h:mm a")
     });
     $messages.append(html);
+    autoscroll();
+})
+
+socket.on('roomUsers', ({room, users})=> {
+    const html = Mustache.render(roomUsersTemplate, {
+        room,
+        users
+    })
+    $roomUsers.html(html);
 })
 
 $(() => {
@@ -43,9 +57,8 @@ $(() => {
             $message.val('');
             $message.focus();
             if (error) {
-                return console.log(error);
+                return alert(error);
             }
-            console.log('Message Delivered');
         });
     })
 })
@@ -59,8 +72,12 @@ $(() => {
         navigator.geolocation.getCurrentPosition((position) => {
             socket.emit('location', position.coords.latitude, position.coords.longitude, (msg) => {
                 $locationBtn.attr('disabled', false);
-                console.log(`message is ${msg}`);
             });
         })
     })
+})
+
+socket.emit('join', {username, room}, error=>{
+    alert(error);
+    location.href = '/';
 })

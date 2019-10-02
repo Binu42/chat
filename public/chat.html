@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="chat">
+        <div id="roomUsers" class="chat__sidebar">
+
+        </div>
+        <div class="chat__main">
+            <div class="chat__messages" id="messages">
+
+            </div>
+        </div>
+    </div>
+    <div class="compose">
+        <form id="chat">
+            <input type="text" id="message" autocomplete="off">
+            <button id="send">Send<i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+        </form>
+        <button id="location">Location <i class="fa fa-map-marker" aria-hidden="true"></i></button>
+    </div>
+
+
+    <script id="message-template" type="text/html">
+        <div class="message">
+            <p>
+                <span class="message__name">{{username}}</span>
+                <span class="message__meta">{{createdAt}}</span>
+            </p>
+            <p>
+                {{message}}
+            </p>
+            <hr>
+        </div>
+    </script>
+
+    <script id="location-template" type="text/html">
+        <div class="message">
+            <p>
+                <span class="message__name">{{username}}</span>
+                <span class="message__meta">{{createdAt}}</span>
+            </p>
+            <p><a target="_blank" href="{{location}}">My current Location</a></p>
+            <hr>
+        </div>
+    </script>
+
+    <script type="text/html" id="roomUsers-template">
+        <h2 class='room-title'>{{room}}</h2>
+        <h3 class='list-title'>Online Users</h3>
+        <ul class="users">
+            {{#users}}
+                <li>{{username}} <span class="online">•</span></li>
+                <hr>
+                <p class="clear"></p>
+            {{/users}}
+        </ul>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
+
+</html>

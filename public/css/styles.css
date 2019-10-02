@@ -22,7 +22,7 @@ body {
 
 hr{
     border: none;
-    border-top: 2px solid coral;
+    border-top: 1px solid #707070;
 }
 
 h1 {
@@ -37,9 +37,10 @@ label {
 }
 
 input {
-    border: 2px solid #050505;
+    border: 1px solid #050505;
     padding: 12px;
     outline: none;
+    border-radius: 5px;
 }
 
 button {
@@ -50,6 +51,11 @@ button {
     color: white;
     font-size: 16px;
     transition: background .3s ease;
+    border-radius: 5px;
+}
+
+#send{
+    border-radius: 0;
 }
 
 #location{
@@ -88,6 +94,7 @@ button:disabled {
     background: #F7F7FA;
     padding: 24px;
     width: 250px;
+    border-radius: 5px;
 }
 
 .centered-form button {
@@ -99,6 +106,9 @@ button:disabled {
     width: 100%;
 }
 
+.text-center{
+    text-align: center;
+}
 /* Chat Page Layout */
 
 .chat {
@@ -106,7 +116,7 @@ button:disabled {
 }
 
 .chat__sidebar {
-    height: 90vh;
+    height: 88vh;
     color: white;
     background: #333744;
     width: 25%;
@@ -119,7 +129,7 @@ button:disabled {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 88vh;
 }
 
 .chat__messages {
@@ -196,6 +206,16 @@ button:disabled {
     list-style-type: none;
     font-weight: 300;
     padding: 12px 24px 0 24px;
+}
+
+.online{
+    float: right;
+    color: lawngreen;
+    font-size: 26px;
+}
+
+.clear{
+    clear: both;
 }
 
 @media(max-width: 40rem){
